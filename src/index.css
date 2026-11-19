@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-navy: #19344B;
+    --color-steel: #527B91;
+    --color-copper: #B97851;
+    --color-brass: #BEA16B;
+    --color-teal: #4A9B98;
+    --color-ivory: #FAF8F4;
+    --color-stone: #EDEBE6;
+    --color-pale-blue: #E7EEF1;
+    --color-white: #FFFFFF;
+    --color-slate: #26343D;
+    --color-graphite: #3D474D;
+  }
+
+  html {
+    background-color: #FAF8F4;
+    color: #26343D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #FAF8F4;
+    color: #26343D;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Borderless architectural CTA underline animation */
+.cta-borderless {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0.625rem 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-borderless::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.35rem;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0.32);
+  transform-origin: left center;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-borderless:hover::after,
+.cta-borderless:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.cta-borderless .cta-arrow {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-borderless:hover .cta-arrow,
+.cta-borderless:focus-visible .cta-arrow {
+  transform: translateX(4px);
+}
+
+.cta-borderless:focus-visible {
+  outline: 2px solid #B97851;
+  outline-offset: 4px;
+}
+
+/* Architectural hairline nav link underline */
+.nav-editorial-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-editorial-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background-color: #B97851;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-editorial-link:hover::after,
+.nav-editorial-link[data-active='true']::after {
+  transform: scaleX(1);
+}
+
+/* Borderless architectural form inputs (bottom hairline rule only, zero boxed rectangles) */
+.editorial-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(25, 52, 75, 0.25);
+  border-radius: 0;
+  padding: 0.75rem 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #26343D;
+  transition: border-color 180ms ease;
+}
+
+.editorial-input:focus {
+  outline: none;
+  border-bottom-color: #B97851;
+}
+
+.editorial-input::placeholder {
+  color: rgba(61, 71, 77, 0.55);
+}
+
+/* Horizontal gallery scrollbar hiding for clean editorial track */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
